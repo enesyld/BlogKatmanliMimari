@@ -4,6 +4,7 @@ using Blog.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Blog.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230111095109_Initial2")]
+    partial class Initial2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -62,7 +64,8 @@ namespace Blog.Data.Migrations
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
 
                     b.Property<int>("ViewCount")
                         .HasColumnType("int");
@@ -74,32 +77,6 @@ namespace Blog.Data.Migrations
                     b.HasIndex("ImageId");
 
                     b.ToTable("Articles");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("93a766de-4df0-4e68-80b2-3520b975d2a3"),
-                            CategoryId = new Guid("a26ffa43-78a3-414b-89e7-83af238d4bd4"),
-                            Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nec erat varius, accumsan eros vitae, sodales risus. Vivamus volutpat tellus id sapien lacinia, vel fringilla leo condimentum. Curabitur accumsan, nunc sed pellentesque faucibus, dolor elit eleifend ligula, nec blandit dolor eros ut libero. Etiam a nulla quis urna accumsan placerat id in nisi. Donec et nibh leo. Donec tempus neque urna. Vivamus pulvinar erat egestas rutrum malesuada. Donec urna quam, tristique eu faucibus molestie, semper ut dui. Mauris vitae congue tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-                            CreatedBy = "Admin Test",
-                            CreatedDate = new DateTime(2023, 1, 11, 14, 21, 54, 696, DateTimeKind.Local).AddTicks(6746),
-                            ImageId = new Guid("34592e9f-8d43-4218-97b9-9b9e5a90a1a6"),
-                            IsDeleted = false,
-                            Title = "Asp.net Core Deneme Makalesi",
-                            ViewCount = 15
-                        },
-                        new
-                        {
-                            Id = new Guid("21295476-2a13-4056-b076-1362c6629009"),
-                            CategoryId = new Guid("98e0002d-19e4-446c-aa10-9c408632375d"),
-                            Content = "Visual Studio Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nec erat varius, accumsan eros vitae, sodales risus. Vivamus volutpat tellus id sapien lacinia, vel fringilla leo condimentum. Curabitur accumsan, nunc sed pellentesque faucibus, dolor elit eleifend ligula, nec blandit dolor eros ut libero. Etiam a nulla quis urna accumsan placerat id in nisi. Donec et nibh leo. Donec tempus neque urna. Vivamus pulvinar erat egestas rutrum malesuada. Donec urna quam, tristique eu faucibus molestie, semper ut dui. Mauris vitae congue tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-                            CreatedBy = "Admin Test",
-                            CreatedDate = new DateTime(2023, 1, 11, 14, 21, 54, 696, DateTimeKind.Local).AddTicks(6753),
-                            ImageId = new Guid("ffb69adc-97ed-448e-80ee-b4e8659f9a87"),
-                            IsDeleted = false,
-                            Title = "Visual Studio Deneme Makalesi",
-                            ViewCount = 15
-                        });
                 });
 
             modelBuilder.Entity("Blog.Entity.Entities.Category", b =>
@@ -137,24 +114,6 @@ namespace Blog.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("a26ffa43-78a3-414b-89e7-83af238d4bd4"),
-                            CreatedBy = "Admin Test",
-                            CreatedDate = new DateTime(2023, 1, 11, 14, 21, 54, 696, DateTimeKind.Local).AddTicks(6898),
-                            IsDeleted = false,
-                            Name = "Asp.Net Core"
-                        },
-                        new
-                        {
-                            Id = new Guid("98e0002d-19e4-446c-aa10-9c408632375d"),
-                            CreatedBy = "Admin Test",
-                            CreatedDate = new DateTime(2023, 1, 11, 14, 21, 54, 696, DateTimeKind.Local).AddTicks(6902),
-                            IsDeleted = false,
-                            Name = "Visual Studio 2022"
-                        });
                 });
 
             modelBuilder.Entity("Blog.Entity.Entities.Image", b =>
@@ -196,26 +155,6 @@ namespace Blog.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Images");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("34592e9f-8d43-4218-97b9-9b9e5a90a1a6"),
-                            CreatedBy = "Admin Test",
-                            CreatedDate = new DateTime(2023, 1, 11, 14, 21, 54, 696, DateTimeKind.Local).AddTicks(6997),
-                            FileName = "Images/testimage",
-                            FileType = "jpg",
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            Id = new Guid("ffb69adc-97ed-448e-80ee-b4e8659f9a87"),
-                            CreatedBy = "Admin Test",
-                            CreatedDate = new DateTime(2023, 1, 11, 14, 21, 54, 696, DateTimeKind.Local).AddTicks(7000),
-                            FileName = "Images/vstest",
-                            FileType = "jpg",
-                            IsDeleted = false
-                        });
                 });
 
             modelBuilder.Entity("Blog.Entity.Entities.Article", b =>

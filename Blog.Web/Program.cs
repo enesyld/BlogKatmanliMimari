@@ -1,4 +1,5 @@
 using Blog.Data.Context;
+using Blog.Data.Extensions;
 using Microsoft.EntityFrameworkCore;
 
 namespace Blog.Web
@@ -8,6 +9,8 @@ namespace Blog.Web
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            builder.Services.LoadDataLayerExtention(builder.Configuration);
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
