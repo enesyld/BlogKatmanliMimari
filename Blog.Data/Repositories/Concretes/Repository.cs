@@ -1,6 +1,7 @@
 ﻿using Blog.Core.Entities;
 using Blog.Data.Context;
 using Blog.Data.Repositories.Abstraction;
+using Blog.Entity.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -81,5 +82,7 @@ namespace Blog.Data.Repositories.Concretes
         {
             return await Table.CountAsync(predicate);
         }
+
+       
     }
 }

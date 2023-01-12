@@ -1,4 +1,5 @@
 ﻿using Blog.Core.Entities;
+using Blog.Entity.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,6 @@ namespace Blog.Data.Repositories.Abstraction
         Task<T> DeleteAsync(T entity);
         Task<bool> AnyAsync(Expression<Func<T, bool>> predicate);
         Task<int> CountAsync(Expression<Func<T, bool>> predicate = null);
-
+        
     }
 }

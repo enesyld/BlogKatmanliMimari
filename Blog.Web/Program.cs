@@ -1,5 +1,7 @@
 using Blog.Data.Context;
 using Blog.Data.Extensions;
+using Blog.Service.Extensions;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 
 namespace Blog.Web
@@ -12,10 +14,11 @@ namespace Blog.Web
 
             builder.Services.LoadDataLayerExtention(builder.Configuration);
 
+            builder.Services.LoadServiceLayerExtention();
+
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-            builder.Services.AddDbContext<AppDbContext>(opt=>opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-
+           
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
